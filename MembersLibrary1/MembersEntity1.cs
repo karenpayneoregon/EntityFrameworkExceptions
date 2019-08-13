@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
+using EntityValidationLibrary.Classes;
 using MembersLibrary1.Classes;
 
 namespace MembersLibrary1
@@ -32,7 +33,6 @@ namespace MembersLibrary1
                 .WillCascadeOnDelete(false);
         }
 
-        public Exception unhandlException;
         public override int SaveChanges()
         {
             var newEntities = ChangeTracker.Entries()
@@ -62,7 +62,7 @@ namespace MembersLibrary1
                 /*
                  * Will e handle back at the caller
                  */
-                unhandlException = ex;
+               
                 throw ex;
             }
         }

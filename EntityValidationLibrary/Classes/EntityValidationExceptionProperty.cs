@@ -1,4 +1,4 @@
-﻿namespace MembersLibrary1.Classes
+﻿namespace EntityValidationLibrary.Classes
 {
     public class EntityValidationExceptionProperty
     {

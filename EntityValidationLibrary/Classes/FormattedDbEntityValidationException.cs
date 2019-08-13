@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.Entity.Validation;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace MembersLibrary1.Classes
+namespace EntityValidationLibrary.Classes
 {
     public class FormattedDbEntityValidationException : Exception
     {
@@ -34,7 +31,6 @@ namespace MembersLibrary1.Classes
                     sb.AppendLine($"- Entity of type \"{eve.Entry.Entity.GetType().FullName}\" in state \"{eve.Entry.State}\" has the following validation errors:");
                     foreach (var ve in eve.ValidationErrors)
                     {
-                        var dddd = eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName);
                         sb.AppendLine($"   {ve.PropertyName}, Value: \"{eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName)}\", Error: \"{ve.ErrorMessage}\"");
                     }
                 }

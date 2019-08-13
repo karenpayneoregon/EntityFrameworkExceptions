@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity.Validation;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using LanguageExtensionsLibrary;
 
-namespace MembersLibrary1.Classes
+namespace EntityValidationLibrary.Classes
 {
     public class ValidationErrors
     {
@@ -33,7 +31,7 @@ namespace MembersLibrary1.Classes
                     item.Items.Add(new EntityValidationExceptionProperty()
                     {
                         PropertyName = ve.PropertyName,
-                        ErrorMessage = ve.ErrorMessage,
+                        ErrorMessage = ve.ErrorMessage.SplitCamelCase().Replace("field ",""),
                         Value = eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName)
                     });
                     

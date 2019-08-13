@@ -62,28 +62,10 @@
     <Compile Include="BadAddMemberForm.Designer.cs">
       <DependentUpon>BadAddMemberForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExceptionResultsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ExceptionResultsForm.Designer.cs">
-      <DependentUpon>ExceptionResultsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="BadAddMemberForm.resx">
       <DependentUpon>BadAddMemberForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ExceptionResultsForm.resx">
-      <DependentUpon>ExceptionResultsForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -112,6 +94,10 @@
     <ProjectReference Include="..\DescendantsLibrary\DescendantsLibrary.csproj">
       <Project>{70F30648-4CA9-43F5-96F4-6E663369A8E8}</Project>
       <Name>DescendantsLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EntityValidationLibrary\EntityValidationLibrary.csproj">
+      <Project>{B1C4FFEA-707F-4DD2-BE1A-33E034979B6E}</Project>
+      <Name>EntityValidationLibrary</Name>
     </ProjectReference>
     <ProjectReference Include="..\MembersLibrary1\MembersLibrary1.csproj">
       <Project>{B7A59EFF-3271-4E12-BDE2-360029AB2738}</Project>

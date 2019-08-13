@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 
-namespace MembersLibrary1.Classes
+namespace EntityValidationLibrary.Classes
 {
     public class EntityValidationExceptionItem
     {

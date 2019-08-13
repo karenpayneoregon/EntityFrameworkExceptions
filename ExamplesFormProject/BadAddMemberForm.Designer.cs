@@ -191,7 +191,7 @@
             this.PhoneTextBox.Name = "PhoneTextBox";
             this.PhoneTextBox.Size = new System.Drawing.Size(121, 20);
             this.PhoneTextBox.TabIndex = 15;
-            this.PhoneTextBox.Tag = "Phone";
+            this.PhoneTextBox.Tag = "ContactPhone";
             // 
             // AddMemberButton
             // 
