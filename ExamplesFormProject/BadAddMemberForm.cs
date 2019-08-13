@@ -20,7 +20,12 @@ namespace ExamplesFormProject
             InitializeComponent();
             Shown += BadAddMemberForm_Shown;
         }
-
+        /// <summary>
+        /// Comment out ComboBox SelectedIndex = for
+        /// testing all validation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BadAddMemberForm_Shown(object sender, EventArgs e)
         {
             var ops = new MembersOperations1();
@@ -29,7 +34,11 @@ namespace ExamplesFormProject
             CountryComboBox.DataSource = ops.Countries;
             CountryComboBox.SelectedIndex = 1;
         }
-
+        /// <summary>
+        /// Attempt to add a new member record
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddMemberButton_Click(object sender, EventArgs e)
         {
             var controls = this.TextBoxList();
@@ -37,7 +46,6 @@ namespace ExamplesFormProject
             {
                 errorProvider1.SetError(textBox,"");
             }
-
 
             if (GenderComboBox.SelectedIndex == 0 || CountryComboBox.SelectedIndex == 0)
             {
@@ -53,8 +61,7 @@ namespace ExamplesFormProject
                 City = CityTextBox.Text,
                 State = StateTextBox.Text,
                 Country = CountryComboBox.Text,
-                ContactPhone = PhoneTextBox.Text,
-                JoinDate = DateTime.Now
+                ContactPhone = PhoneTextBox.Text
             };
 
             var ops = new MembersOperations1();
@@ -62,12 +69,26 @@ namespace ExamplesFormProject
 
             if (!ops.IsSuccessFul)
             {
+                /*
+                 * Do we have a generic error?
+                 */
+                if (ops.LastException != null)
+                {
+                    MessageBox.Show(ops.LastExceptionMessage);
+                    return;
+                }
+
+                /*
+                 * No generic error, move on to validation errors.
+                 */
                 var errorInformation = ops.ValidationErrors;
                 foreach (var item in errorInformation.EntityValidationExceptionList)
                 {
                     foreach (var itemItem in item.Items)
                     {
-                        var currentBox = controls.FirstOrDefault(tb => tb.Tag.ToString() == itemItem.PropertyName);
+                        var currentBox = controls
+                            .FirstOrDefault(tb => tb.Tag.ToString() == itemItem.PropertyName);
+
                         if (currentBox != null)
                         {
                             errorProvider1.SetError(currentBox,itemItem.ErrorMessage);
@@ -79,7 +100,6 @@ namespace ExamplesFormProject
             {
                 MessageBox.Show("Added member");
             }
-
         }
     }
 }

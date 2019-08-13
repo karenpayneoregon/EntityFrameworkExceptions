@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 using MembersLibrary1.Classes;
 
@@ -29,14 +31,21 @@ namespace MembersLibrary1
                 .HasForeignKey(e => e.Gender)
                 .WillCascadeOnDelete(false);
         }
+
+        public Exception unhandlException;
         public override int SaveChanges()
         {
             var newEntities = ChangeTracker.Entries()
                 .Where(p => p.State == EntityState.Added).ToList();
 
-            if (newEntities is MemberList1)
+            foreach (var item in newEntities)
             {
-                Console.WriteLine();
+                // set join date, could also be done in the database
+                // with default value.
+                if (item.Entity is MemberList1 entity)
+                {
+                    entity.JoinDate = DateTime.Now;
+                }
             }
 
 
@@ -51,9 +60,9 @@ namespace MembersLibrary1
             catch (Exception ex)
             {
                 /*
-                 * Decide on how to handle back in the calling code and
-                 * perhaps write to a log file
+                 * Will e handle back at the caller
                  */
+                unhandlException = ex;
                 throw ex;
             }
         }
