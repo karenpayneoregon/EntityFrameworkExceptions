@@ -13,6 +13,12 @@ using MembersLibrary1.Classes;
 
 namespace ExamplesFormProject
 {
+    /// <summary>
+    /// The entire intent is to test for validation issues.
+    /// At this level we check to see
+    ///   - Are required fields entered
+    ///   - Are required fields of type string an acceptable length
+    /// </summary>
     public partial class BadAddMemberForm : Form
     {
         public BadAddMemberForm()

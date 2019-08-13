@@ -40,14 +40,16 @@ namespace MembersLibrary1
 
             foreach (var item in newEntities)
             {
-                // set join date, could also be done in the database
-                // with default value.
+                /*
+                 * Set active by default
+                 * Set JoinDate here or change JoinDate in the table for a default value
+                 */
                 if (item.Entity is MemberList1 entity)
                 {
                     entity.JoinDate = DateTime.Now;
+                    entity.Active = true;
                 }
             }
-
 
             try
             {
