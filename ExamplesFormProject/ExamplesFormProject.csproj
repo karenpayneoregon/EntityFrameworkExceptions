@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BadAddMemberForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BadAddMemberForm.Designer.cs">
+      <DependentUpon>BadAddMemberForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExceptionResultsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BadAddMemberForm.resx">
+      <DependentUpon>BadAddMemberForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ExceptionResultsForm.resx">
       <DependentUpon>ExceptionResultsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +109,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DescendantsLibrary\DescendantsLibrary.csproj">
+      <Project>{70F30648-4CA9-43F5-96F4-6E663369A8E8}</Project>
+      <Name>DescendantsLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MembersLibrary1\MembersLibrary1.csproj">
       <Project>{B7A59EFF-3271-4E12-BDE2-360029AB2738}</Project>
       <Name>MembersLibrary1</Name>

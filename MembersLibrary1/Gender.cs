@@ -24,5 +24,10 @@ namespace MembersLibrary1
 
         [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MemberList1> MemberList1 { get; set; }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

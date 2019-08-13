@@ -61,6 +61,7 @@ namespace ExamplesFormProject
             ops.AddBadMember1(newMember);
             if (!ops.IsSuccessFul)
             {
+                var test = ops.ValidationErrors;
                 var f = new ExceptionResultsForm(ops.ValidationErrorMessage);
                 f.ShowDialog();
             }

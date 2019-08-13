@@ -31,16 +31,30 @@ namespace MembersLibrary1
         }
         public override int SaveChanges()
         {
-            var modifiedEntities = ChangeTracker.Entries()
+            var newEntities = ChangeTracker.Entries()
                 .Where(p => p.State == EntityState.Added).ToList();
+
+            if (newEntities is MemberList1)
+            {
+                Console.WriteLine();
+            }
+
+
             try
             {
                 return base.SaveChanges();
             }
             catch (DbEntityValidationException e)
             {
-                var newException = new FormattedDbEntityValidationException(e);
-                throw newException;
+                throw new FormattedDbEntityValidationException(e);
+            }
+            catch (Exception ex)
+            {
+                /*
+                 * Decide on how to handle back in the calling code and
+                 * perhaps write to a log file
+                 */
+                throw ex;
             }
         }
     }

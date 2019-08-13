@@ -11,8 +11,12 @@ namespace MembersLibrary1.Classes
 {
     public class MembersOperations1 : BaseExceptionProperties
     {
-        private string _ValidationErrorMessage;
-        public string ValidationErrorMessage => _ValidationErrorMessage;
+        private ValidationErrors _validationErrors;
+        public string ValidationErrorMessage => _validationErrorMessage;
+
+        private string _validationErrorMessage;
+        public ValidationErrors ValidationErrors => _validationErrors;
+
         public void AddBadMember1(MemberList1 pMemberList1)
         {
             using (var context = new MembersEntity1())
@@ -22,30 +26,32 @@ namespace MembersLibrary1.Classes
                 {
                     context.SaveChanges();
                 }
-                catch (DbEntityValidationException ev)
+                catch (FormattedDbEntityValidationException fve)
                 {
-                    var test = new ValidationErrors(ev);
-                    Console.WriteLine();
-                    //foreach (var eve in ev.EntityValidationErrors)
-                    //{
-                    //    IEnumerable<DbEntityValidationResult> test = ev.EntityValidationErrors;
-                    //    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                    //        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    //    foreach (var ve in eve.ValidationErrors)
-                    //    {
-                    //        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                    //            ve.PropertyName, ve.ErrorMessage);
-                    //    }
-                    //}
+                    mHasException = true;
+                    _validationErrors = fve.ValidationErrors();
+                    _validationErrorMessage = fve.Message;
+
                 }
                 catch (Exception ex)
                 {
                     mHasException = true;
-                    _ValidationErrorMessage = ((FormattedDbEntityValidationException) ex).Message;
-                    Console.WriteLine();
-
+                    mLastException = ex;
                 }
             }
         }
+
+        public List<Gender> GetGenders()
+        {
+            using (var context = new MembersEntity1())
+            {
+                context.Configuration.LazyLoadingEnabled = false;
+                var genders = context.Genders.AsNoTracking().ToList();
+                genders.Insert(0, new Gender() {Name = "Select", Id = 0});
+
+                return genders;
+            }
+        }
+        public List<string> Countries => new List<string>() {"Select", "France", "Italy", "Spain","USA"  };
     }
 }

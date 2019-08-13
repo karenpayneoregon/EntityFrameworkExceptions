@@ -9,8 +9,16 @@ namespace MembersLibrary1.Classes
 {
     public class FormattedDbEntityValidationException : Exception
     {
+        private ValidationErrors _information;
+
         public FormattedDbEntityValidationException(DbEntityValidationException innerException) :base(null, innerException)
         {
+        }
+
+        public ValidationErrors ValidationErrors()
+        {
+            _information = new ValidationErrors((DbEntityValidationException)InnerException);
+            return _information;
         }
 
         public override string Message
@@ -27,7 +35,6 @@ namespace MembersLibrary1.Classes
                     foreach (var ve in eve.ValidationErrors)
                     {
                         var dddd = eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName);
-                        //sb.AppendLine($"   \"{ve.PropertyName}\", Value: \"{eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName)}\", Error: \"{ve.ErrorMessage}\"");
                         sb.AppendLine($"   {ve.PropertyName}, Value: \"{eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName)}\", Error: \"{ve.ErrorMessage}\"");
                     }
                 }
