@@ -14,7 +14,7 @@ namespace MembersLibrary1
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Gender()
         {
-            MemberList1 = new HashSet<MemberList1>();
+            MemberList1 = new HashSet<ClubMember>();
         }
 
         public int Id { get; set; }
@@ -23,7 +23,7 @@ namespace MembersLibrary1
         public string Name { get; set; }
 
         [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MemberList1> MemberList1 { get; set; }
+        public virtual ICollection<ClubMember> MemberList1 { get; set; }
 
         public override string ToString()
         {

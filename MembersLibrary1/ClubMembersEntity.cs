@@ -11,18 +11,18 @@ namespace MembersLibrary1
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class MembersEntity1 : DbContext
+    public partial class ClubMembersEntity : DbContext
     {
         /// <summary>
         /// Same connection string as used in MembersEntity
         /// </summary>
-        public MembersEntity1()
-            : base("name=MembersEntity1ConnectionString")
+        public ClubMembersEntity() : base("name=MembersEntity1ConnectionString")
         {
+
         }
 
         public virtual DbSet<Gender> Genders { get; set; }
-        public virtual DbSet<MemberList1> MemberList1 { get; set; }
+        public virtual DbSet<ClubMember> MemberList1 { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -31,10 +31,20 @@ namespace MembersLibrary1
                 .WithRequired(e => e.Gender1)
                 .HasForeignKey(e => e.Gender)
                 .WillCascadeOnDelete(false);
+
         }
 
         public override int SaveChanges()
         {
+            /*
+             * Get modified and/or new (not used but here for how to).
+             */
+            var changedEntities = ChangeTracker.Entries()
+                .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified).ToList();
+
+            /*
+             * Only get new
+             */
             var newEntities = ChangeTracker.Entries()
                 .Where(p => p.State == EntityState.Added).ToList();
 
@@ -44,7 +54,7 @@ namespace MembersLibrary1
                  * Set active by default
                  * Set JoinDate here or change JoinDate in the table for a default value
                  */
-                if (item.Entity is MemberList1 entity)
+                if (item.Entity is ClubMember entity)
                 {
                     entity.JoinDate = DateTime.Now;
                     entity.Active = true;

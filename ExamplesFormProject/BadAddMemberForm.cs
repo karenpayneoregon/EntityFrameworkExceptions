@@ -34,7 +34,7 @@ namespace ExamplesFormProject
         /// <param name="e"></param>
         private void BadAddMemberForm_Shown(object sender, EventArgs e)
         {
-            var ops = new MembersOperations1();
+            var ops = new ClubOperations();
             GenderComboBox.DataSource = ops.GetGenders();
             GenderComboBox.SelectedIndex = 1;
             CountryComboBox.DataSource = ops.Countries;
@@ -58,7 +58,7 @@ namespace ExamplesFormProject
                 MessageBox.Show("Dropdown items must be selected");
                 return;
             }
-            var person = new MemberList1
+            var person = new ClubMember
             {
                 FirstName = FirstNameTextBox.Text,
                 LastName = LastNameTextBox.Text,
@@ -70,7 +70,7 @@ namespace ExamplesFormProject
                 ContactPhone = PhoneTextBox.Text
             };
 
-            var ops = new MembersOperations1();
+            var ops = new ClubOperations();
             ops.AddBadMember1(person);
 
             if (!ops.IsSuccessFul)

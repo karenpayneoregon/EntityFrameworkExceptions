@@ -10,7 +10,7 @@ using EntityValidationLibrary.Classes;
 
 namespace MembersLibrary1.Classes
 {
-    public class MembersOperations1 : BaseExceptionProperties
+    public class ClubOperations : BaseExceptionProperties
     {
         private ValidationErrors _validationErrors;
         public string ValidationErrorMessage => _validationErrorMessage;
@@ -18,9 +18,9 @@ namespace MembersLibrary1.Classes
         private string _validationErrorMessage;
         public ValidationErrors ValidationErrors => _validationErrors;
 
-        public void AddBadMember1(MemberList1 pMemberList1)
+        public void AddBadMember1(ClubMember pMemberList1)
         {
-            using (var context = new MembersEntity1())
+            using (var context = new ClubMembersEntity())
             {
                 context.Entry(pMemberList1).State = EntityState.Added;
                 try
@@ -44,7 +44,7 @@ namespace MembersLibrary1.Classes
 
         public List<Gender> GetGenders()
         {
-            using (var context = new MembersEntity1())
+            using (var context = new ClubMembersEntity())
             {
                 context.Configuration.LazyLoadingEnabled = false;
                 var genders = context.Genders.AsNoTracking().ToList();

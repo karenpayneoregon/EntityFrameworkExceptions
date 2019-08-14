@@ -53,10 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\MembersOperations1.cs" />
+    <Compile Include="Classes\ClubOperations.cs" />
     <Compile Include="Gender.cs" />
-    <Compile Include="MemberList1.cs" />
-    <Compile Include="MembersEntity1.cs" />
+    <Compile Include="ClubMember.cs" />
+    <Compile Include="ClubMembersEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

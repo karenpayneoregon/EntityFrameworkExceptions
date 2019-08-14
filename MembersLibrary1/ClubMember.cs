@@ -6,7 +6,8 @@ namespace MembersLibrary1
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class MemberList1
+    [Table("MemberList1")]
+    public partial class ClubMember
     {
         [Key]
         [Column(Order = 0)]
