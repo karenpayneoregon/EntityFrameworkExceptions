@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entity Libraries", "Entity Libraries", "{694F29B2-C463-4464-9E27-7819E9326EB8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MembersLibrary", "MembersLibrary\MembersLibrary.csproj", "{7BD4A0F3-0EDB-4335-A614-E04FF4D2F7F4}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{E4408C7D-391C-4BD7-8E91-7262AABAEBD1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamplesFormProject", "ExamplesFormProject\ExamplesFormProject.csproj", "{4654E03F-7F3B-4249-8A24-9B661A0CC55F}"
@@ -32,10 +30,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7BD4A0F3-0EDB-4335-A614-E04FF4D2F7F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7BD4A0F3-0EDB-4335-A614-E04FF4D2F7F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7BD4A0F3-0EDB-4335-A614-E04FF4D2F7F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7BD4A0F3-0EDB-4335-A614-E04FF4D2F7F4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4654E03F-7F3B-4249-8A24-9B661A0CC55F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4654E03F-7F3B-4249-8A24-9B661A0CC55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4654E03F-7F3B-4249-8A24-9B661A0CC55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -61,7 +55,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{7BD4A0F3-0EDB-4335-A614-E04FF4D2F7F4} = {694F29B2-C463-4464-9E27-7819E9326EB8}
 		{4654E03F-7F3B-4249-8A24-9B661A0CC55F} = {E4408C7D-391C-4BD7-8E91-7262AABAEBD1}
 		{B7A59EFF-3271-4E12-BDE2-360029AB2738} = {694F29B2-C463-4464-9E27-7819E9326EB8}
 		{70F30648-4CA9-43F5-96F4-6E663369A8E8} = {00AA7048-8117-4183-ACA5-1FDB575579E8}

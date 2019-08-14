@@ -31,7 +31,8 @@ namespace EntityValidationLibrary.Classes
                     item.Items.Add(new EntityValidationExceptionProperty()
                     {
                         PropertyName = ve.PropertyName,
-                        ErrorMessage = ve.ErrorMessage.SplitCamelCase().Replace("field ",""),
+                        ErrorMessage = ve.ErrorMessage
+                            .SplitCamelCase().Replace("field ",""),
                         Value = eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName)
                     });
                     

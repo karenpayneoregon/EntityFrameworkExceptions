@@ -103,10 +103,6 @@
       <Project>{B7A59EFF-3271-4E12-BDE2-360029AB2738}</Project>
       <Name>MembersLibrary1</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MembersLibrary\MembersLibrary.csproj">
-      <Project>{7BD4A0F3-0EDB-4335-A614-E04FF4D2F7F4}</Project>
-      <Name>MembersLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -22,34 +22,34 @@ namespace MembersLibrary1.Classes
         /// required properties not set and length of field violations
         /// </summary>
         /// <param name="pMemberList1"></param>
-        public void AddBadMember1(ClubMember pMemberList1)
+    public void AddBadMember1(ClubMember pMemberList1)
+    {
+        using (var context = new ClubMembersEntity())
         {
-            using (var context = new ClubMembersEntity())
+            context.Entry(pMemberList1).State = EntityState.Added;
+            try
             {
-                context.Entry(pMemberList1).State = EntityState.Added;
-                try
-                {
 
-                    context.SaveChanges();
+                context.SaveChanges();
 
-                }
-                catch (FormattedDbEntityValidationException fve)
-                {
+            }
+            catch (FormattedDbEntityValidationException fve)
+            {
 
-                    mHasException = true;
-                    _validationErrors = fve.ValidationErrors();
-                    _validationErrorMessage = fve.Message;
+                mHasException = true;
+                _validationErrors = fve.ValidationErrors();
+                _validationErrorMessage = fve.Message;
 
-                }
-                catch (Exception ex)
-                {
+            }
+            catch (Exception ex)
+            {
 
-                    mHasException = true;
-                    mLastException = ex;
+                mHasException = true;
+                mLastException = ex;
 
-                }
             }
         }
+    }
         /// <summary>
         /// Get all gender types from the database table
         /// </summary>
