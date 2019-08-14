@@ -17,7 +17,11 @@ namespace MembersLibrary1.Classes
 
         private string _validationErrorMessage;
         public ValidationErrors ValidationErrors => _validationErrors;
-
+        /// <summary>
+        /// This method shows an easy method to get violations on
+        /// required properties not set and length of field violations
+        /// </summary>
+        /// <param name="pMemberList1"></param>
         public void AddBadMember1(ClubMember pMemberList1)
         {
             using (var context = new ClubMembersEntity())
@@ -25,10 +29,13 @@ namespace MembersLibrary1.Classes
                 context.Entry(pMemberList1).State = EntityState.Added;
                 try
                 {
+
                     context.SaveChanges();
+
                 }
                 catch (FormattedDbEntityValidationException fve)
                 {
+
                     mHasException = true;
                     _validationErrors = fve.ValidationErrors();
                     _validationErrorMessage = fve.Message;
@@ -36,8 +43,10 @@ namespace MembersLibrary1.Classes
                 }
                 catch (Exception ex)
                 {
+
                     mHasException = true;
                     mLastException = ex;
+
                 }
             }
         }
@@ -59,6 +68,13 @@ namespace MembersLibrary1.Classes
         /// <summary>
         /// Mock up of countries
         /// </summary>
-        public List<string> Countries => new List<string>() {"Select", "France", "Italy", "Spain","USA"  };
+        public List<string> Countries => new List<string>()
+        {
+            "Select",
+            "France",
+            "Italy",
+            "Spain",
+            "USA"
+        };
     }
 }

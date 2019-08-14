@@ -8,7 +8,8 @@ namespace EntityValidationLibrary.Classes
     {
         private ValidationErrors _information;
 
-        public FormattedDbEntityValidationException(DbEntityValidationException innerException) :base(null, innerException)
+        public FormattedDbEntityValidationException(DbEntityValidationException innerException) 
+            :base(null, innerException)
         {
         }
 
@@ -28,10 +29,14 @@ namespace EntityValidationLibrary.Classes
 
                 foreach (var eve in innerException.EntityValidationErrors)
                 {
-                    sb.AppendLine($"- Entity of type \"{eve.Entry.Entity.GetType().FullName}\" in state \"{eve.Entry.State}\" has the following validation errors:");
+                    sb.AppendLine($"- Entity of type \"{eve.Entry.Entity.GetType().FullName}\" in" + 
+                                  $" state \"{eve.Entry.State}\" has the following validation errors:");
+
                     foreach (var ve in eve.ValidationErrors)
                     {
-                        sb.AppendLine($"   {ve.PropertyName}, Value: \"{eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName)}\", Error: \"{ve.ErrorMessage}\"");
+                        sb.AppendLine($"   {ve.PropertyName}, Value: " + 
+                                      $"\"{eve.Entry.CurrentValues.GetValue<object>(ve.PropertyName)}\", " + 
+                                      $"Error: \"{ve.ErrorMessage}\"");
                     }
                 }
 

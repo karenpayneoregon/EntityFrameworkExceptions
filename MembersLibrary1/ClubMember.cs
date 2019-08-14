@@ -6,6 +6,10 @@ namespace MembersLibrary1
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    /// <summary>
+    /// This class represents a table named MemberList1 which uses
+    /// the attribute [Table] to point to the table.
+    /// </summary>
     [Table("MemberList1")]
     public partial class ClubMember
     {
