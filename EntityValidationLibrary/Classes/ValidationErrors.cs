@@ -15,20 +15,20 @@ namespace EntityValidationLibrary.Classes
 
             foreach (var eve in pEv.EntityValidationErrors)
             {
-                var item = new EntityValidationExceptionItem()
+                var exceptionItem = new EntityValidationExceptionItem()
                 {
                     Name = eve.Entry.Entity.GetType().Name,
                     State = eve.Entry.State
                 };
 
-                EntityValidationExceptionList.Add(item);
+                EntityValidationExceptionList.Add(exceptionItem);
 
-                item.Items = new List<EntityValidationExceptionProperty>();
+                exceptionItem.PropertyItems = new List<EntityValidationExceptionProperty>();
 
                 foreach (var ve in eve.ValidationErrors)
                 {
 
-                    item.Items.Add(new EntityValidationExceptionProperty()
+                    exceptionItem.PropertyItems.Add(new EntityValidationExceptionProperty()
                     {
                         PropertyName = ve.PropertyName,
                         ErrorMessage = ve.ErrorMessage
@@ -44,9 +44,9 @@ namespace EntityValidationLibrary.Classes
             foreach (var entity in EntityValidationExceptionList)
             {
                 sb.AppendLine(entity.ToString());
-                foreach (var item in entity.Items)
+                foreach (var exceptionProperty in entity.PropertyItems)
                 {
-                    sb.AppendLine($"  {item.ToString()}");
+                    sb.AppendLine($"  {exceptionProperty.ToString()}");
                 }
             }
         }

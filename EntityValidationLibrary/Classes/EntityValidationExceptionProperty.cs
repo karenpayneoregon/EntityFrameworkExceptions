@@ -1,5 +1,8 @@
 ﻿namespace EntityValidationLibrary.Classes
 {
+    /// <summary>
+    /// Container for validation exceptions 
+    /// </summary>
     public class EntityValidationExceptionProperty
     {
         /// <summary>

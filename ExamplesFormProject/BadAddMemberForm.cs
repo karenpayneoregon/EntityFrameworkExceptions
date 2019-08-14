@@ -90,7 +90,7 @@ namespace ExamplesFormProject
                 var errorInformation = ops.ValidationErrors;
                 foreach (var item in errorInformation.EntityValidationExceptionList)
                 {
-                    foreach (var itemItem in item.Items)
+                    foreach (var itemItem in item.PropertyItems)
                     {
                         var currentBox = controls
                             .FirstOrDefault(tb => tb.Tag.ToString() == itemItem.PropertyName);
