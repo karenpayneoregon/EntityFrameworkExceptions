@@ -41,7 +41,10 @@ namespace MembersLibrary1.Classes
                 }
             }
         }
-
+        /// <summary>
+        /// Get all gender types from the database table
+        /// </summary>
+        /// <returns></returns>
         public List<Gender> GetGenders()
         {
             using (var context = new ClubMembersEntity())
@@ -53,6 +56,9 @@ namespace MembersLibrary1.Classes
                 return genders;
             }
         }
+        /// <summary>
+        /// Mock up of countries
+        /// </summary>
         public List<string> Countries => new List<string>() {"Select", "France", "Italy", "Spain","USA"  };
     }
 }
